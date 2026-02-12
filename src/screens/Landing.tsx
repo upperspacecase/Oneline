@@ -24,45 +24,6 @@ export default function Landing({ onEnter }: Props) {
           <p className="l-big l-accent">You need one line.</p>
         </section>
 
-        <section className="l-section">
-          <p className="l-body">One honest sentence. Every day. For five years.</p>
-          <p className="l-body l-dim">That's it.</p>
-        </section>
-
-        {/* The magic */}
-        <section className="l-section">
-          <p className="l-body">On day one, it feels pointless.</p>
-          <p className="l-body">On day 366, you see who you were a year ago.</p>
-          <p className="l-body">On day 1,096, three versions of you are having a conversation you never planned.</p>
-        </section>
-
-        {/* The scene */}
-        <section className="l-section l-scene">
-          <p className="l-body-italic">
-            The person who wrote that line in a hostel in Mexico is talking to the person who wrote it from their apartment in Portugal.
-          </p>
-          <p className="l-body-italic l-dim">
-            Neither of them knew the other was coming.
-          </p>
-        </section>
-
-        {/* The reframe */}
-        <section className="l-section">
-          <p className="l-body">This isn't productivity.</p>
-          <p className="l-body l-accent">It's proof.</p>
-          <p className="l-small">Proof that you showed up. Proof that you changed. Proof that the things that felt enormous eventually became small, and the things that felt small became your whole life.</p>
-        </section>
-
-        <section className="l-section">
-          <div className="l-line" />
-        </section>
-
-        {/* The close */}
-        <section className="l-section">
-          <p className="l-big">One line won't change your day.</p>
-          <p className="l-big l-accent">Five years of them will change how you see yourself.</p>
-        </section>
-
         {/* Visual demo */}
         <section className="l-section l-demo">
           <div className="l-demo-date">February 12</div>
