@@ -25,7 +25,7 @@ export default function Browse() {
   }, [dateKey])
 
   function goToDate(date: Date) {
-    navigate(`/browse/${parseDateKey(date)}`)
+    navigate(`/app/browse/${parseDateKey(date)}`)
   }
 
   return (

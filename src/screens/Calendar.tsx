@@ -41,7 +41,7 @@ export default function Calendar() {
 
   function handleDayClick(day: Date) {
     const dateKey = parseDateKey(day)
-    navigate(`/browse/${dateKey}`)
+    navigate(`/app/browse/${dateKey}`)
   }
 
   return (
