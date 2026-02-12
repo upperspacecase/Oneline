@@ -1,0 +1,704 @@
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0a0a0a;
+  --bg-card: #141414;
+  --bg-hover: #1a1a1a;
+  --text: #e8e4df;
+  --text-muted: #6b6560;
+  --text-dim: #3d3a37;
+  --accent: #c8b8a4;
+  --accent-hover: #d9cbb8;
+  --border: #1f1d1b;
+  --danger: #a04040;
+  --success: #5a8a5a;
+  --serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --radius: 8px;
+  --nav-height: 72px;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+}
+
+/* ===== App Layout ===== */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: var(--nav-height);
+}
+
+.screen {
+  padding: 24px 20px;
+  min-height: 100%;
+}
+
+/* ===== Loading Screen ===== */
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--bg);
+}
+
+.loading-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+  opacity: 0.6;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* ===== Lock Screen ===== */
+.lock-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--bg);
+  padding: 20px;
+}
+
+.lock-content {
+  text-align: center;
+  width: 100%;
+  max-width: 280px;
+}
+
+.lock-title {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 32px;
+  color: var(--text);
+}
+
+.lock-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lock-input {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 18px;
+  padding: 14px;
+  text-align: center;
+  letter-spacing: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.lock-input:focus {
+  border-color: var(--accent);
+}
+
+.lock-error {
+  color: var(--danger);
+  font-size: 13px;
+}
+
+.lock-btn {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.lock-btn:hover { background: var(--accent-hover); }
+.lock-btn:disabled { opacity: 0.4; cursor: default; }
+
+/* ===== Bottom Nav ===== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  max-width: 480px;
+  margin: 0 auto;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+  padding: 8px 12px;
+}
+
+.nav-item.active {
+  color: var(--accent);
+}
+
+.nav-item:hover {
+  color: var(--text-muted);
+}
+
+/* ===== Today Screen ===== */
+.today-screen {
+  padding-top: 48px;
+}
+
+.today-header {
+  margin-bottom: 32px;
+}
+
+.today-date {
+  display: block;
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.today-date-full {
+  display: block;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-weight: 300;
+}
+
+.today-input-area {
+  margin-bottom: 40px;
+}
+
+.today-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.6;
+  padding: 12px 0;
+  resize: none;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.today-input::placeholder {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.today-input:focus {
+  border-bottom-color: var(--accent);
+}
+
+.today-input-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.char-count {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.today-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.icon-btn:hover {
+  color: var(--text-muted);
+}
+
+.save-btn {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--radius);
+  padding: 8px 20px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.save-btn:hover { background: var(--accent-hover); }
+.save-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  background: var(--text-dim);
+}
+
+.today-image-preview {
+  position: relative;
+  margin-top: 12px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.today-image-preview img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.remove-image {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Past Entries ===== */
+.past-entries {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+
+.past-entries-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.past-entry {
+  margin-bottom: 20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--border);
+}
+
+.past-entry-year {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.past-entry-text {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.past-entry-image {
+  width: 100%;
+  max-height: 160px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-top: 8px;
+  opacity: 0.7;
+}
+
+.past-entries-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+.past-entries-empty p {
+  margin-bottom: 4px;
+}
+
+.muted {
+  color: var(--text-dim);
+}
+
+/* ===== Calendar Screen ===== */
+.calendar-screen {
+  padding-top: 32px;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.calendar-title {
+  text-align: center;
+}
+
+.calendar-month {
+  display: block;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.calendar-stat {
+  display: block;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.nav-arrow {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.nav-arrow:hover { color: var(--text); }
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 8px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 500;
+  padding: 4px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: var(--radius);
+  position: relative;
+  transition: all 0.15s;
+  gap: 2px;
+}
+
+.calendar-day:hover:not(.empty) {
+  background: var(--bg-hover);
+}
+
+.calendar-day.filled {
+  color: var(--text);
+}
+
+.calendar-day.today .calendar-day-num {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.calendar-day-num {
+  font-variant-numeric: tabular-nums;
+}
+
+.calendar-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.calendar-day.empty {
+  cursor: default;
+}
+
+.calendar-streak-bar {
+  margin-top: 24px;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.calendar-streak-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* ===== Browse Screen ===== */
+.browse-screen {
+  padding-top: 32px;
+}
+
+.browse-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.browse-title {
+  text-align: center;
+}
+
+.browse-date {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.browse-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.browse-entry {
+  padding-left: 16px;
+  border-left: 2px solid var(--border);
+}
+
+.browse-entry-year {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.browse-entry-text {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.browse-entry-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-top: 8px;
+}
+
+.browse-empty, .browse-loading {
+  text-align: center;
+  color: var(--text-dim);
+  padding: 60px 20px;
+  font-size: 14px;
+}
+
+/* ===== Settings Screen ===== */
+.settings-screen {
+  padding-top: 32px;
+}
+
+.settings-title {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.settings-section {
+  margin-bottom: 32px;
+}
+
+.settings-section h3 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.passcode-row {
+  flex-wrap: wrap;
+}
+
+.passcode-input {
+  flex: 1;
+  min-width: 140px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  padding: 10px 12px;
+  text-align: center;
+  letter-spacing: 4px;
+  outline: none;
+}
+
+.passcode-input:focus {
+  border-color: var(--accent);
+}
+
+.settings-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  font-family: var(--sans);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.settings-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.settings-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.settings-btn.danger {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.settings-btn.danger:hover {
+  background: var(--danger);
+  color: var(--text);
+}
+
+.settings-about {
+  padding: 20px 0;
+}
+
+.settings-tagline {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+/* ===== Scrollbar ===== */
+.main::-webkit-scrollbar {
+  width: 4px;
+}
+
+.main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.past-entry, .browse-entry {
+  animation: fadeIn 0.3s ease forwards;
+}
