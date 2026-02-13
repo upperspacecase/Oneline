@@ -61,7 +61,7 @@ export default function Today() {
         <textarea
           ref={inputRef}
           className="today-input"
-          placeholder="One line."
+          placeholder="Through line."
           value={text}
           onChange={(e) => {
             if (e.target.value.length <= MAX_CHARS) {

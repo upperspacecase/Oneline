@@ -20,11 +20,11 @@ export async function exportToPDF(): Promise<void> {
 
   doc.setFont('helvetica', 'bold')
   doc.setFontSize(18)
-  doc.text('One Line', pageWidth / 2, y, { align: 'center' })
+  doc.text('Through Line', pageWidth / 2, y, { align: 'center' })
   y += 6
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(8)
-  doc.text('One line. Every day. For five years.', pageWidth / 2, y, { align: 'center' })
+  doc.text('Through line. Every day. For five years.', pageWidth / 2, y, { align: 'center' })
   y += 12
 
   // Group by dateKey
@@ -65,5 +65,5 @@ export async function exportToPDF(): Promise<void> {
     y += 3
   }
 
-  doc.save('oneline-journal.pdf')
+  doc.save('throughline-journal.pdf')
 }

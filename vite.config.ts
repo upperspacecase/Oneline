@@ -9,9 +9,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'One Line',
-        short_name: 'One Line',
-        description: 'One line. Every day. For five years.',
+        name: 'Through Line',
+        short_name: 'Through Line',
+        description: 'Through line. Every day. For five years.',
         theme_color: '#0a0a0a',
         background_color: '#0a0a0a',
         display: 'standalone',

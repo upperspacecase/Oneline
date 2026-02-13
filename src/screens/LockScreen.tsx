@@ -24,7 +24,7 @@ export default function LockScreen({ onUnlock }: Props) {
   return (
     <div className="lock-screen">
       <div className="lock-content">
-        <h1 className="lock-title">One Line.</h1>
+        <h1 className="lock-title">Through Line.</h1>
         <form onSubmit={handleSubmit} className="lock-form">
           <input
             type="password"

@@ -36,7 +36,7 @@ export default function App() {
   if (loading) {
     return (
       <div className="loading-screen">
-        <p className="loading-title">One Line.</p>
+        <p className="loading-title">Through Line.</p>
       </div>
     )
   }

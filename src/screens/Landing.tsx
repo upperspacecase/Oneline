@@ -13,15 +13,15 @@ export default function Landing({ onEnter }: Props) {
 
         {/* Hero */}
         <section className="l-hero">
-          <h1 className="l-title">One Line.</h1>
+          <h1 className="l-title">Through Line.</h1>
           <div className="l-line" />
         </section>
 
         {/* The hook */}
         <section className="l-section">
           <p className="l-big">You don't need another journaling app.</p>
-          <p className="l-big">You don't need prompts or streaks or AI telling you how you feel.</p>
-          <p className="l-big l-accent">You need one line.</p>
+          <p className="l-big">You need consistency. One sentence a day, every day, for years.</p>
+          <p className="l-big l-accent">You need a through line.</p>
         </section>
 
         {/* Visual demo */}
@@ -74,7 +74,7 @@ export default function Landing({ onEnter }: Props) {
               <p className="l-price-save">$2.50/mo &mdash; save $30</p>
             )}
             <ul className="l-features">
-              <li>One line per day, 280 characters</li>
+              <li>One sentence per day, 280 characters</li>
               <li>See past years on the same date</li>
               <li>Calendar view with streaks</li>
               <li>Export to PDF</li>
@@ -92,13 +92,13 @@ export default function Landing({ onEnter }: Props) {
 
         {/* Closer */}
         <section className="l-section l-closer">
-          <p className="l-big">One Line.</p>
+          <p className="l-big">Through Line.</p>
           <p className="l-body l-dim">Every day. For the rest of your life.</p>
         </section>
 
         <footer className="l-footer">
           <div className="l-line" />
-          <p>&copy; {new Date().getFullYear()} One Line</p>
+          <p>&copy; {new Date().getFullYear()} Through Line</p>
         </footer>
       </div>
     </div>

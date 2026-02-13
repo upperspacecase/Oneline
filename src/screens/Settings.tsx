@@ -83,9 +83,9 @@ export default function Settings() {
       <div className="settings-section">
         <h3>About</h3>
         <div className="settings-about">
-          <p className="settings-tagline">One Line.</p>
+          <p className="settings-tagline">Through Line.</p>
           <p className="muted">
-            One honest sentence. Every day. For five years.
+            One sentence. Every day. For five years.
           </p>
         </div>
       </div>
