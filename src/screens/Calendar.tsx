@@ -11,13 +11,14 @@ import {
   isToday,
 } from 'date-fns'
 import { useNavigate } from 'react-router-dom'
-import { getEntriesForMonth } from '../lib/db'
+import { getEntriesForMonth, getStreakStats } from '../lib/db'
 import { parseDateKey } from '../lib/types'
 
 export default function Calendar() {
   const navigate = useNavigate()
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [filledDays, setFilledDays] = useState<Set<string>>(new Set())
+  const [streaks, setStreaks] = useState<{ current: number; longest: number }>({ current: 0, longest: 0 })
   const year = currentMonth.getFullYear()
   const month = currentMonth.getMonth() + 1
 
@@ -26,6 +27,10 @@ export default function Calendar() {
       setFilledDays(new Set(entries.map((e) => e.dateKey)))
     })
   }, [year, month])
+
+  useEffect(() => {
+    getStreakStats().then(setStreaks)
+  }, [])
 
   const monthStart = startOfMonth(currentMonth)
   const monthEnd = endOfMonth(currentMonth)
@@ -66,6 +71,21 @@ export default function Calendar() {
           </svg>
         </button>
       </header>
+
+      {/* Streak stats */}
+      {(streaks.current > 0 || streaks.longest > 0) && (
+        <div className="streak-stats">
+          <div className="streak-stat">
+            <span className="streak-number">{streaks.current}</span>
+            <span className="streak-label">current streak</span>
+          </div>
+          <div className="streak-divider" />
+          <div className="streak-stat">
+            <span className="streak-number">{streaks.longest}</span>
+            <span className="streak-label">longest streak</span>
+          </div>
+        </div>
+      )}
 
       <div className="calendar-weekdays">
         {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (

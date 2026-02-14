@@ -11,7 +11,7 @@ export default defineConfig({
       manifest: {
         name: 'Through Line',
         short_name: 'Through Line',
-        description: 'Through line. Every day. For five years.',
+        description: 'A one-sentence journal. 280 characters about today. Over years, those sentences become the story of your life.',
         theme_color: '#0a0a0a',
         background_color: '#0a0a0a',
         display: 'standalone',

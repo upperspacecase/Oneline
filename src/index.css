@@ -703,6 +703,130 @@ html, body {
   animation: fadeIn 0.3s ease forwards;
 }
 
+/* ===== Through Line Countdown ===== */
+.throughline-countdown-number {
+  font-family: var(--serif);
+  font-size: 64px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.throughline-countdown-label {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+/* ===== Ghost Through Line (Day 1 empty state) ===== */
+.ghost-throughline {
+  padding: 20px 0;
+}
+
+.ghost-entry {
+  padding-left: 16px;
+  border-left: 2px dashed var(--border);
+  opacity: 0.5;
+}
+
+.ghost-year {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.ghost-text {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* ===== Streak Stats ===== */
+.streak-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.streak-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.streak-number {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.streak-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.streak-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+}
+
+/* ===== Browse Subtitle ===== */
+.browse-subtitle {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+/* ===== Share Button ===== */
+.share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 32px;
+  padding: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.share-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.share-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
 /* ===== Landing Page ===== */
 .landing {
   height: 100vh;
@@ -725,15 +849,26 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 24px;
+  text-align: center;
 }
 
-.l-title {
+.l-hero-heading {
   font-family: var(--serif);
-  font-size: clamp(48px, 12vw, 80px);
+  font-size: clamp(36px, 9vw, 56px);
   font-weight: 500;
   color: var(--text);
-  letter-spacing: -1px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+.l-hero-body {
+  font-family: var(--serif);
+  font-size: clamp(17px, 3.5vw, 21px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 460px;
 }
 
 .l-line {
@@ -748,22 +883,18 @@ html, body {
   padding: 64px 0;
 }
 
-.l-big {
+.l-heading {
   font-family: var(--serif);
-  font-size: clamp(24px, 5vw, 36px);
-  font-weight: 400;
-  line-height: 1.3;
+  font-size: clamp(24px, 5vw, 34px);
+  font-weight: 500;
+  line-height: 1.25;
   color: var(--text);
   margin-bottom: 20px;
 }
 
-.l-big:last-child {
-  margin-bottom: 0;
-}
-
 .l-body {
   font-family: var(--serif);
-  font-size: clamp(18px, 3.5vw, 22px);
+  font-size: clamp(17px, 3.5vw, 21px);
   font-weight: 400;
   line-height: 1.6;
   color: var(--text-muted);
@@ -774,42 +905,32 @@ html, body {
   margin-bottom: 0;
 }
 
-.l-body-italic {
+/* Loss Frame */
+.l-loss-frame {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.l-loss-text {
   font-family: var(--serif);
-  font-size: clamp(17px, 3.2vw, 21px);
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 400;
   font-style: italic;
-  font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.6;
   color: var(--text-muted);
-  margin-bottom: 16px;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
-.l-body-italic:last-child {
-  margin-bottom: 0;
-}
-
-.l-small {
-  font-family: var(--serif);
-  font-size: clamp(16px, 3vw, 19px);
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--text-muted);
-  margin-top: 20px;
-}
-
-.l-accent {
-  color: var(--accent);
-}
-
-.l-dim {
+/* Features */
+.l-features-heading {
+  font-family: var(--sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   color: var(--text-dim);
-}
-
-/* Scene */
-.l-scene {
-  border-left: 2px solid var(--border);
-  padding-left: 24px;
-  margin-left: 4px;
+  font-weight: 500;
+  margin-bottom: 16px;
 }
 
 /* Demo */
@@ -886,32 +1007,13 @@ html, body {
   text-align: center;
 }
 
-.l-toggle {
-  display: inline-flex;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 40px;
-  padding: 3px;
-  margin-bottom: 32px;
-}
-
-.l-toggle-btn {
-  background: none;
-  border: none;
-  color: var(--text-dim);
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 400;
-  padding: 10px 24px;
-  border-radius: 40px;
-  cursor: pointer;
-  transition: all 0.25s;
-}
-
-.l-toggle-btn.active {
-  background: var(--accent);
-  color: var(--bg);
+.l-pricing-heading {
+  font-family: var(--serif);
+  font-size: clamp(22px, 5vw, 30px);
   font-weight: 500;
+  color: var(--text);
+  margin-bottom: 32px;
+  line-height: 1.3;
 }
 
 .l-price-card {
@@ -928,7 +1030,7 @@ html, body {
   align-items: baseline;
   justify-content: center;
   gap: 2px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .l-price-dollar {
@@ -955,10 +1057,19 @@ html, body {
   color: var(--text-dim);
 }
 
-.l-price-save {
-  font-size: 13px;
+.l-price-monthly {
+  font-size: 14px;
   color: var(--accent);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
+}
+
+.l-guarantee {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 24px;
 }
 
 .l-features {
@@ -1020,12 +1131,6 @@ html, body {
   margin-top: 12px;
 }
 
-/* Closer */
-.l-closer {
-  text-align: center;
-  padding: 80px 0;
-}
-
 /* Footer */
 .l-footer {
   text-align: center;
@@ -1035,7 +1140,14 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+}
+
+.l-footer-tagline {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-dim);
 }
 
 /* Scroll entrance animations */
@@ -1045,9 +1157,9 @@ html, body {
   animation: landingFadeIn 0.6s ease forwards;
 }
 
-.l-section:nth-child(1) { animation-delay: 0s; }
-.l-section:nth-child(2) { animation-delay: 0.1s; }
-.l-section:nth-child(3) { animation-delay: 0.15s; }
+.l-section:nth-child(2) { animation-delay: 0s; }
+.l-section:nth-child(3) { animation-delay: 0.1s; }
+.l-section:nth-child(4) { animation-delay: 0.15s; }
 
 @keyframes landingFadeIn {
   to {
@@ -1065,15 +1177,15 @@ html, body {
     padding: 48px 0;
   }
 
-  .l-scene {
-    padding-left: 16px;
-  }
-
   .l-demo {
     padding: 24px 20px;
   }
 
   .l-price-card {
     padding: 32px 24px;
+  }
+
+  .l-loss-frame {
+    padding: 56px 0;
   }
 }

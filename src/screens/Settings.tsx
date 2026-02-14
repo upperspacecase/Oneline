@@ -85,7 +85,7 @@ export default function Settings() {
         <div className="settings-about">
           <p className="settings-tagline">Through Line.</p>
           <p className="muted">
-            One sentence. Every day. For five years.
+            Remember everything. Write almost nothing.
           </p>
         </div>
       </div>

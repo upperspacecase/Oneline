@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
-import { format } from 'date-fns'
+import { format, differenceInDays, addYears } from 'date-fns'
 import { useEntriesForDate, useTodayEntry } from '../hooks/useEntries'
+import { getEarliestEntry } from '../lib/db'
 import type { Entry } from '../lib/types'
 
 const MAX_CHARS = 280
@@ -12,6 +13,7 @@ export default function Today() {
   const [text, setText] = useState('')
   const [saved, setSaved] = useState(false)
   const [imageData, setImageData] = useState<string | undefined>()
+  const [daysUntilFirst, setDaysUntilFirst] = useState<number | null>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const fileRef = useRef<HTMLInputElement>(null)
 
@@ -22,6 +24,19 @@ export default function Today() {
       setSaved(true)
     }
   }, [todayEntry])
+
+  // Calculate days until first Through Line
+  useEffect(() => {
+    getEarliestEntry().then((earliest) => {
+      if (!earliest) return
+      const firstDate = new Date(earliest.updatedAt)
+      const anniversary = addYears(firstDate, 1)
+      const diff = differenceInDays(anniversary, today)
+      if (diff > 0) {
+        setDaysUntilFirst(diff)
+      }
+    })
+  }, [])
 
   const pastEntries = entries.filter((e) => e.year !== today.getFullYear())
 
@@ -61,7 +76,7 @@ export default function Today() {
         <textarea
           ref={inputRef}
           className="today-input"
-          placeholder="Through line."
+          placeholder="One sentence about today."
           value={text}
           onChange={(e) => {
             if (e.target.value.length <= MAX_CHARS) {
@@ -124,17 +139,30 @@ export default function Today() {
 
       {pastEntries.length > 0 && (
         <div className="past-entries">
-          <div className="past-entries-label">On this day</div>
+          <div className="past-entries-label">Your Through Line</div>
           {pastEntries.map((entry: Entry) => (
             <PastEntry key={entry.year} entry={entry} />
           ))}
         </div>
       )}
 
-      {pastEntries.length === 0 && saved && (
+      {pastEntries.length === 0 && (
         <div className="past-entries-empty">
-          <p>This is your first {format(today, 'MMMM d')}.</p>
-          <p className="muted">Next year, you'll see this entry right here.</p>
+          {daysUntilFirst !== null && daysUntilFirst > 0 ? (
+            <>
+              <p className="throughline-countdown-number">{daysUntilFirst}</p>
+              <p className="throughline-countdown-label">days until your first Through Line</p>
+            </>
+          ) : (
+            <>
+              <div className="ghost-throughline">
+                <div className="ghost-entry">
+                  <span className="ghost-year">{today.getFullYear() + 1}</span>
+                  <span className="ghost-text">One year from now, you'll see today's sentence here. Write it.</span>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
     </div>

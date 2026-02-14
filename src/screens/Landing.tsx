@@ -1,30 +1,26 @@
-import { useState } from 'react'
-
 interface Props {
   onEnter: () => void
 }
 
 export default function Landing({ onEnter }: Props) {
-  const [billingCycle, setBillingCycle] = useState<'year' | 'month'>('year')
-
   return (
     <div className="landing">
       <div className="landing-scroll">
 
         {/* Hero */}
         <section className="l-hero">
-          <h1 className="l-title">Through Line.</h1>
-          <div className="l-line" />
+          <h1 className="l-hero-heading">Remember everything.<br />Write almost nothing.</h1>
+          <p className="l-hero-body">
+            Through Line is a one-sentence journal. 280 characters about today.
+            Over years, those sentences become the story of your life.
+          </p>
+          <button className="l-cta" onClick={onEnter}>
+            Write your first sentence
+          </button>
+          <p className="l-cta-sub">Free for 14 days. Then $2.50/mo, billed at $30/year.</p>
         </section>
 
-        {/* The hook */}
-        <section className="l-section">
-          <p className="l-big">You don't need another journaling app.</p>
-          <p className="l-big">You need consistency. One sentence a day, every day, for years.</p>
-          <p className="l-big l-accent">You need a through line.</p>
-        </section>
-
-        {/* Visual demo */}
+        {/* Demo card — no label, just the card */}
         <section className="l-section l-demo">
           <div className="l-demo-date">February 12</div>
           <div className="l-demo-entry l-demo-current">
@@ -47,57 +43,88 @@ export default function Landing({ onEnter }: Props) {
           </div>
         </section>
 
-        {/* Pricing */}
-        <section className="l-section l-pricing-section">
-          <div className="l-toggle">
-            <button
-              className={`l-toggle-btn${billingCycle === 'year' ? ' active' : ''}`}
-              onClick={() => setBillingCycle('year')}
-            >
-              Yearly
-            </button>
-            <button
-              className={`l-toggle-btn${billingCycle === 'month' ? ' active' : ''}`}
-              onClick={() => setBillingCycle('month')}
-            >
-              Monthly
-            </button>
-          </div>
+        {/* Constraint section */}
+        <section className="l-section">
+          <h2 className="l-heading">No blank pages. No prompts. Just one sentence about today.</h2>
+          <p className="l-body">
+            Most journals give you infinite space. That's not freedom &mdash; that's why you stopped writing.
+            Through Line gives you 280 characters. The constraint kills the pressure and turns journaling
+            into something that takes less time than unlocking your phone.
+          </p>
+        </section>
 
+        {/* Killer feature */}
+        <section className="l-section">
+          <h2 className="l-heading">This day, every year.</h2>
+          <p className="l-body">
+            Open Through Line on any date and read what you wrote &mdash; last year, two years ago,
+            five years ago. Rediscover things you forgot. Notice patterns you couldn't see while
+            living them. The entries you write today are for the person you'll be in a year.
+          </p>
+        </section>
+
+        {/* Second demo card */}
+        <section className="l-section l-demo">
+          <div className="l-demo-date">October 3</div>
+          <div className="l-demo-entry">
+            <span className="l-demo-year">2026</span>
+            <span className="l-demo-text">Moved into the new place. Boxes everywhere. It already feels like home.</span>
+          </div>
+          <div className="l-demo-entry">
+            <span className="l-demo-year">2025</span>
+            <span className="l-demo-text">Told her I want to leave the city. She said she's been thinking the same thing.</span>
+          </div>
+          <div className="l-demo-entry">
+            <span className="l-demo-year">2024</span>
+            <span className="l-demo-text">Can't sleep. The apartment feels too small for everything I'm carrying.</span>
+          </div>
+        </section>
+
+        {/* Loss frame */}
+        <section className="l-section l-loss-frame">
+          <p className="l-loss-text">
+            You won't remember what you had for lunch last Tuesday.
+            You won't remember how you felt the day everything changed &mdash; unless you write it down.
+          </p>
+        </section>
+
+        {/* Supporting features */}
+        <section className="l-section">
+          <h3 className="l-features-heading">Everything else.</h3>
+          <ul className="l-features">
+            <li>280 characters. One sentence. No blank-page anxiety.</li>
+            <li>Streak calendar. Never break the chain.</li>
+            <li>Attach a photo to any entry.</li>
+            <li>Export your whole journal as a PDF.</li>
+            <li>Passcode lock. Your words only.</li>
+            <li>Works offline. Your data stays on your device.</li>
+          </ul>
+        </section>
+
+        {/* Guarantee + Pricing + Final CTA */}
+        <section className="l-section l-pricing-section">
+          <h2 className="l-pricing-heading">8 cents a day to remember the rest of your life.</h2>
           <div className="l-price-card">
             <div className="l-price">
               <span className="l-price-dollar">$</span>
-              <span className="l-price-amount">{billingCycle === 'year' ? '30' : '5'}</span>
-              <span className="l-price-period">/{billingCycle === 'year' ? 'year' : 'mo'}</span>
+              <span className="l-price-amount">30</span>
+              <span className="l-price-period">/year</span>
             </div>
-            {billingCycle === 'year' && (
-              <p className="l-price-save">$2.50/mo &mdash; save $30</p>
-            )}
-            <ul className="l-features">
-              <li>One sentence per day, 280 characters</li>
-              <li>See past years on the same date</li>
-              <li>Calendar view with streaks</li>
-              <li>Export to PDF</li>
-              <li>Photo attachment</li>
-              <li>Passcode lock</li>
-              <li>Works offline</li>
-              <li>Your data stays on your device</li>
-            </ul>
+            <p className="l-price-monthly">$2.50/mo</p>
+            <p className="l-guarantee">
+              Write for 30 days. If it's not for you, email us for a full refund.
+            </p>
             <button className="l-cta" onClick={onEnter}>
-              Start writing
+              Write your first sentence
             </button>
-            <p className="l-cta-sub">No account needed. Start free, right now.</p>
+            <p className="l-cta-sub">Free for 14 days. No account needed.</p>
           </div>
         </section>
 
-        {/* Closer */}
-        <section className="l-section l-closer">
-          <p className="l-big">Through Line.</p>
-          <p className="l-body l-dim">Every day. For the rest of your life.</p>
-        </section>
-
+        {/* Footer */}
         <footer className="l-footer">
           <div className="l-line" />
+          <p className="l-footer-tagline">Through Line. Every day. For the rest of your life.</p>
           <p>&copy; {new Date().getFullYear()} Through Line</p>
         </footer>
       </div>
